@@ -1,0 +1,71 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TV controller</title>
+    <% include ../partials/head %>
+    <link href="/css/tv.css" rel="stylesheet">
+  </head>
+  <body class="container">
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <main>
+      <div class="container">
+	<h1 class="hidden-xs">TV controller</h1>
+	<br>
+        <div class="row">
+          <div class="col-xs-6">
+	    <button type="button" class="btn btn-danger"
+		    value="KEY_POWER" id="power">Power</button>
+
+            <div class="col-xs-6">
+	      <button type="button" class="btn btn-warning mode"
+		      value="TV_MODE" id="tvmode">TV</button>
+	    </div>
+            <div class="col-xs-6">
+	      <button type="button" class="btn btn-warning mode"
+		      value="HDMI_MODE" id="hdmimode">HDMI</button>
+	    </div>
+
+	  </div>
+          <div class="col-xs-3">
+	    <button value="KEY_CHANNELUP" type="button" class="btn btn-success
+					 updown">▲</button>
+	    <div class="updown-label">
+	      Channel
+	    </div>
+	    <button value="KEY_CHANNELDOWN" type="button" class="btn btn-success
+					 updown">▼</button>
+          </div>
+          <div class="col-xs-3">
+	    <button value="KEY_VOLUMEUP" type="button" class="btn btn-success
+					 updown">▲</button>
+	    <div class="updown-label">
+	      Volume
+	    </div>
+	    <button value="KEY_VOLUMEDOWN" type="button" class="btn btn-success
+					 updown">▼</button>
+          </div>
+
+
+	  <div class="clearfix"></div>
+	  <div id="interval"></div>
+
+          <% items.forEach(function(item){ %>
+          <div class="col-xs-4 channel-col">
+	    <button value="<%= item['value'] %>"
+		    type="button" class="btn btn-primary				 channel"><%- item["num"] %></button>
+	  </div>
+	  <% }) %>
+	</div>
+      </div>
+    </main>
+    <footer>
+      <% include ../partials/footer %>
+      <script src="js/tv.js"></script>
+    </footer>
+  </body>
+</html>
