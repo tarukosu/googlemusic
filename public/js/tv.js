@@ -33,6 +33,18 @@ $(function(){
 	});
     }
 
+    function volume(volume){
+	$.ajax({
+	    url: url,
+	    cache:false,
+	    data: {
+		action: "volume",
+		volume: volume
+	    }
+	});
+    }
+
+
     $(".normalplay").click(function(){
 	playList(this.value, false);
     });
@@ -49,7 +61,10 @@ $(function(){
 	play(this.value);
     });
 
-
+    $('#volume').slider().on('slide', function(e) {
+	volume(e.value);
+	console.log(e.value);
+    });
 
     /*
     $("button").click(function(){
