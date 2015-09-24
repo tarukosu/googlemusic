@@ -17,6 +17,7 @@
 	<h1 class="hidden-xs">Music controller</h1>
       </div>
 
+
       <button type="button" class="btn btn-default btn-lg play" value="prev">
 	<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
 	Prev
@@ -33,6 +34,12 @@
 	<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
 	Stop
       </button>
+
+      音量
+	<input id="volume" data-slider-id='ex1Slider' type="text"
+	       data-slider-min="0" data-slider-max="100" data-slider-step="1"
+	       data-slider-value="14"/>
+
 
       <ul class="list-group">
         <% items.forEach(function(item, index){ %>

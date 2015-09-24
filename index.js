@@ -57,13 +57,12 @@ process.on('SIGINT', function () {
 // http://127.0.0.1:8124/にアクセス時の処理
 server.get('/', function(req, res){
     client.invoke("getPlaylists", function(error, response, more) {
-	playlists = response;
-	console.log(response);
-	res.render('music.ejs', {items: response});
-	/*
-	client.invoke("addMusicList", response[0]["tracks"], function(error, response, more) {
+	exec('amixer get PCM  | grep "Left" | grep "dB" | sed -e "s/^.*\[\(.*\)\%].*$/\1/"', function(err, stdout, stderr){
+	    console.log(stdout);
+	    playlists = response;
+	    console.log(response);
+	    res.render('music.ejs', {items: response});
 	});
-	*/
     });
     // 描画
 
@@ -107,8 +106,12 @@ server.get('/musicapi', function(req, res){
 	}else if(command == "prev"){
 	    client.invoke("playPrev");
 	}
-
-
+    }else if(action == "volume"){
+	var volume = req.query.volume;
+	console.log(volume);
+	exec('amixer set PCM ' + volume + '%', function(err, stdout, stderr){
+	    console.log(stdout);
+	});
     }else{
 	key = req.query.button;
 	console.log(key);
