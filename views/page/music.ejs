@@ -1,0 +1,57 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Music controller</title>
+    <% include ../partials/head %>
+    <link href="/css/tv.css" rel="stylesheet">
+  </head>
+  <body class="container">
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <main>
+      <div class="container">
+	<h1 class="hidden-xs">Music controller</h1>
+      </div>
+
+      <button type="button" class="btn btn-default btn-lg " value="play">
+	<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+	Play
+      </button>
+      <button type="button" class="btn btn-default btn-lg stop" value="stop">
+	<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+	Stop
+      </button>
+      <ul class="list-group">
+        <% items.forEach(function(item, index){ %>
+	<li class="list-group-item">
+	  <div class="row">
+	    <span>
+	      <%= item.name %>
+	    </span>
+	  <button type="button" class="btn btn-default btn-lg
+				       pull-right randomplay" value="<%= index %>">
+	    <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+	    Shuffle
+	  </button>
+
+	  <button type="button" class="btn btn-default btn-lg
+				       pull-right normalplay" value="<%= index %>">
+	    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+	    Play
+	  </button>
+	  </div>
+
+	</li>
+	<% }) %>
+      </ul>
+    </main>
+    <footer>
+      <% include ../partials/footer %>
+      <script src="js/tv.js"></script>
+    </footer>
+  </body>
+</html>
