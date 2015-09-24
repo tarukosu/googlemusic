@@ -17,14 +17,23 @@
 	<h1 class="hidden-xs">Music controller</h1>
       </div>
 
-      <button type="button" class="btn btn-default btn-lg " value="play">
+      <button type="button" class="btn btn-default btn-lg play" value="prev">
+	<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+	Prev
+      </button>
+      <button type="button" class="btn btn-default btn-lg play" value="play">
 	<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
 	Play
       </button>
-      <button type="button" class="btn btn-default btn-lg stop" value="stop">
+      <button type="button" class="btn btn-default btn-lg play" value="stop">
 	<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
 	Stop
       </button>
+      <button type="button" class="btn btn-default btn-lg play" value="next">
+	<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+	Stop
+      </button>
+
       <ul class="list-group">
         <% items.forEach(function(item, index){ %>
 	<li class="list-group-item">
