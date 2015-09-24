@@ -66,6 +66,8 @@ class musicController():
     def playMusic(self):
         if(self.index >= len(self.playQueue)):
             return False
+        if(self.index < 0):
+            self.index = 0
         self.stopMusic()
         trackId = self.playQueue[self.index]['trackId']
         self.mThread = playMusicThread(self.api, trackId, self)
@@ -75,6 +77,12 @@ class musicController():
         self.stopMusic()
         self.index += 1;
         self.playMusic()
+
+    def playPrev(self):
+        self.stopMusic()
+        self.index -= 1;
+        self.playMusic()
+
 
     def stopMusic(self):
         try:

@@ -45,6 +45,11 @@ $(function(){
 	play("stop");
     });
 
+    $(".play").click(function(){
+	play(this.value);
+    });
+
+
 
     /*
     $("button").click(function(){

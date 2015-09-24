@@ -1,0 +1,5 @@
+account.py
+*.pyc
+bower_components/
+node_modules/
+*~

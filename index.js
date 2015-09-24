@@ -103,7 +103,15 @@ server.get('/musicapi', function(req, res){
 	console.log(command);
 	if(command == "stop"){
 	    client.invoke("stopMusic");
+	}else if(command == "play"){
+	    client.invoke("playMusic");
+	}else if(command == "next"){
+	    client.invoke("playNext");
+	}else if(command == "prev"){
+	    client.invoke("playPrev");
 	}
+
+
     }else{
 	key = req.query.button;
 	console.log(key);
