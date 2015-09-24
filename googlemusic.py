@@ -96,8 +96,8 @@ if __name__ == '__main__':
     s = zerorpc.Server(musicController())
     s.bind("tcp://0.0.0.0:4242")
     s.run()
-#     # mc = musicController()
-#     # lists = mc.getPlaylists()
-#     # playlist = 5
-#     # mc.addMusicList(lists[playlist]['tracks'])
-#     # mc.playMusic()
+    # mc = musicController()
+    # lists = mc.getPlaylists()
+    # playlist = 5
+    # mc.addMusicList(lists[playlist]['tracks'])
+    # mc.playMusic()
