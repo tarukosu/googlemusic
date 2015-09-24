@@ -42,9 +42,6 @@ var child_p = exec('python /home/furuta/git/googlemusic/googlemusic.py', functio
 */
 var child_p = child_process.spawn('python' ,['\/home\/furuta\/git\/googlemusic\/googlemusic.py']);
 
-
-
-
 process.on('SIGINT', function () {
     console.log("kill");
     child_p.kill('SIGINT');
