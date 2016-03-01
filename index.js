@@ -32,7 +32,7 @@ process.stdin.resume();
 
 
 exec('pkill vlc', function(err, stdout, stderr){
-	console.log("start python");
+	console.log("pkill vlc");
 });
 
 /*
@@ -47,7 +47,7 @@ process.on('SIGINT', function () {
     child_p.kill('SIGINT');
 
     exec('pkill vlc', function(err, stdout, stderr){
-	console.log("start python");
+	console.log("pkill vlc");
     });
 
     process.exit();
@@ -57,11 +57,14 @@ process.on('SIGINT', function () {
 // http://127.0.0.1:8124/にアクセス時の処理
 server.get('/', function(req, res){
     client.invoke("getPlaylists", function(error, response, more) {
-	exec('amixer get PCM  | grep "Left" | grep "dB" | sed -e "s/^.*\[\(.*\)\%].*$/\1/"', function(err, stdout, stderr){
-	    console.log(stdout);
+	console.log(error);
+	exec('amixer get PCM  | grep "Left" | grep "dB" | sed -e "s/^.*\\[\\(.*\\)\\%].*$/\\1/"', function(err, stdout, stderr){
+	    volume = stdout;
+	    //console.log(volume);
 	    playlists = response;
 	    console.log(response);
-	    res.render('music.ejs', {items: response});
+	    //console.log(response);
+	    res.render('music.ejs', {items: response, volume: volume});
 	});
     });
     // 描画
@@ -81,7 +84,7 @@ server.get('/musicapi', function(req, res){
 	var shuffle = req.query.shuffle;
 	console.log("shuffle");
 	console.log(shuffle);
-	//console.log(playlists);
+	console.log(playlists);
 	var tracks = playlists[index]["tracks"];
 	if(shuffle == "true"){
 	    tracks = __.shuffle(tracks);
