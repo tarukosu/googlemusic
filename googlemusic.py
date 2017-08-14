@@ -98,6 +98,7 @@ if __name__ == '__main__':
     s.run()
     # mc = musicController()
     # lists = mc.getPlaylists()
+    # print(lists)
     # playlist = 5
     # mc.addMusicList(lists[playlist]['tracks'])
     # mc.playMusic()

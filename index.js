@@ -12,7 +12,9 @@ var zerorpc = require("zerorpc");
 var __ = require("underscore");
 
 var client = new zerorpc.Client();
-client.connect("tcp://127.0.0.1:4242");
+//client.connect("tcp://127.0.0.1:4242");
+
+
 
 
 // テンプレートエンジンejsの設定
@@ -35,12 +37,22 @@ exec('pkill vlc', function(err, stdout, stderr){
 	console.log("pkill vlc");
 });
 
+
 /*
-var child_p = exec('python /home/furuta/git/googlemusic/googlemusic.py', function(err, stdout, stderr){
+var child_p = exec('python /home/yusuke/git/googlemusic/googlemusic.py', function(err, stdout, stderr){
 	console.log("start python");
+    console.log(err);
+    console.log(stdout);
 });
 */
-var child_p = child_process.spawn('python' ,['\/home\/furuta\/git\/googlemusic\/googlemusic.py']);
+
+
+var child_p = child_process.spawn('python' ,['\/home\/yusuke\/git\/googlemusic\/googlemusic.py']);
+
+setTimeout(() => {
+    client.connect("tcp://127.0.0.1:4242");
+    console.log("connect to music api");
+}, 5000);
 
 process.on('SIGINT', function () {
     console.log("kill");
@@ -70,6 +82,7 @@ server.get('/', function(req, res){
     // 描画
 
 });
+
 
 function sendButton(button){
     exec('irsend SEND_ONCE panasonic_tv.conf ' + button, function(err, stdout, stderr){
@@ -138,5 +151,3 @@ server.get('/musicapi', function(req, res){
 
 // サーバ起動
 server.listen(port);
-
-
